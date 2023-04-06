@@ -5,24 +5,8 @@ import Axios from "axios";
 function App() {
   let [excuse, setExcuse] = useState(null);
 
-  const getExcuseParty = () => {
-    Axios.get("https://excuser-three.vercel.app/v1/excuse/party/").then(
-      (res) => {
-        setExcuse(res.data[0]);
-      }
-    );
-  };
-
-  const getExcuseFamily = () => {
-    Axios.get("https://excuser-three.vercel.app/v1/excuse/family/").then(
-      (res) => {
-        setExcuse(res.data[0]);
-      }
-    );
-  };
-
-  const getExcuseOffice = () => {
-    Axios.get("https://excuser-three.vercel.app/v1/excuse/office/").then(
+  const getExcuseParty = (type) => {
+    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${type}/`).then(
       (res) => {
         setExcuse(res.data[0]);
       }
@@ -32,11 +16,11 @@ function App() {
   return (
     <div className="App">
       <h1>Generate an Excuse</h1>
-      <button onClick={getExcuseParty}>Party</button>
-      <button onClick={getExcuseFamily}>Family</button>
-      <button onClick={getExcuseOffice}>Office</button>
+      <button onClick={() => getExcuseParty("party")}>Party</button>
+      <button onClick={() => getExcuseParty("family")}>Family</button>
+      <button onClick={() => getExcuseParty("office")}>Office</button>
       <h2>{excuse?.excuse}</h2>
-      <h3>{excuse?.category}</h3>
+      <h2>{excuse?.category}</h2>
     </div>
   );
 }
