@@ -35,8 +35,8 @@ function App() {
       <button onClick={getExcuseParty}>Party</button>
       <button onClick={getExcuseFamily}>Family</button>
       <button onClick={getExcuseOffice}>Office</button>
-      <h2>{excuse.excuse}</h2>
-      <h3>{excuse.category}</h3>
+      <h2>{excuse?.excuse}</h2>
+      <h3>{excuse?.category}</h3>
     </div>
   );
 }
